@@ -1,8 +1,13 @@
 package programmer.zaman.now.thread.dead_lock;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Balance {
     
     private Long value;
+
+    final static private Lock lock = new ReentrantLock();
 
     public Balance(Long value){
         this.value = value;
@@ -35,6 +40,17 @@ public class Balance {
         synchronized(to){
             Thread.sleep(1_000);
             to.setValue(to.getValue() + value);
+        }
+    }
+
+    public static void transferWithLock(Balance from, Balance to, Long value) throws InterruptedException{
+        try{
+            lock.lock();
+            from.setValue(from.getValue() - value);
+            Thread.sleep(1_000);
+            to.setValue(to.getValue() + value);
+        }finally{
+            lock.unlock();
         }
     }
 
