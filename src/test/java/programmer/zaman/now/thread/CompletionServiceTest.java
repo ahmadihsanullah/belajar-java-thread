@@ -29,11 +29,11 @@ public class CompletionServiceTest {
             }
         });
 
-        //pool task
+        //pool task - fungsi ini yang ngeprint dan nangkep dari thread atas
         Executors.newSingleThreadExecutor().execute(()->{
             while (true) {
                 try {
-                    Future<String> future = completionService.poll(5, TimeUnit.SECONDS);
+                    Future<String> future = completionService.poll(5, TimeUnit.SECONDS); //ngambil dan menghapus
                     if(future == null){
                         break;
                     }
