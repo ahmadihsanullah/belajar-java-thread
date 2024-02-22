@@ -63,7 +63,7 @@ public class ThreadPoolTest {
         var queue = new ArrayBlockingQueue<Runnable>(1000);
 
         var executor = new ThreadPoolExecutor(mainThread, maxThread, alive, aliveTime, queue);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 50; i++) {
             final var task = i;
             Runnable runnable = ()->{
                 try {
