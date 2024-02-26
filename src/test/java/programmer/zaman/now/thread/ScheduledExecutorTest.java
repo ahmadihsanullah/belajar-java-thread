@@ -24,7 +24,7 @@ public class ScheduledExecutorTest {
 
         var executor = Executors.newScheduledThreadPool(10);
 
-        var future = executor.scheduleAtFixedRate(() -> System.out.println("Hello Scheduled"), 2, 2, TimeUnit.SECONDS);
+        var future = executor.scheduleAtFixedRate(() -> System.out.println("Hello Scheduled"), 5, 1, TimeUnit.SECONDS);
 
         System.out.println(future.getDelay(TimeUnit.MILLISECONDS));
 

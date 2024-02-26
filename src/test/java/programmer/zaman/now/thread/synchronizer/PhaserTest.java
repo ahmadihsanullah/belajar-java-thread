@@ -45,7 +45,7 @@ public class PhaserTest {
 
         for (int i = 0; i < 5; i++) {
             executor.execute(()->{
-                phaser.arriveAndAwaitAdvance(); //menunggu sampe phaser 0 
+                phaser.arriveAndAwaitAdvance(); //menunggu sampe phaser 5
                 System.out.println("DONE");
             });
         }
